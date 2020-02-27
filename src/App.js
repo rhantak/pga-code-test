@@ -1,19 +1,39 @@
 import React from 'react'
 import './App.css'
 import Scoreboard from "./components/Scoreboard"
+import PlayerForm from "./components/PlayerForm"
 
-function App() {
-  const testPlayers = [
-    {firstName:"Ryan", lastName:"Hantak", score:78},
-    {firstName:"John", lastName:"Smith", score:77},
-    {firstName:"Jane", lastName:"Doe", score:77}
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      counter: 1,
+      players: []
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
 
-  ]
-  return (
-    <div className="App">
-      <Scoreboard players={testPlayers}/>
-    </div>
-  )
+  handleSubmit(newPlayer) {
+    newPlayer.id = this.state.counter
+    this.state.counter ++
+    this.setState(prevState => {
+      const updatedPlayers = [...prevState.players, newPlayer]
+      return {players: updatedPlayers}
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="ScoreboardContainer">
+          <Scoreboard players={this.state.players}/>
+        </div>
+        <div className="PlayerFormContainer">
+          <PlayerForm handleSubmit={this.handleSubmit}/>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App

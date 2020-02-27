@@ -22,7 +22,29 @@
     text-align: center;
 }
 
-.App {
+.PlayerForm {
+  display: flex;
+  text-align: center;
+  border: 3px solid black;
+  padding: 5px;
+}
+
+.ScoreboardContainer {
   display: flex;
   justify-content: center;
+}
+
+.PlayerFormContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.FormTitle {
+  text-decoration: underline;
+}
+
+input {
+  width: 125px;
+  float: right;
 }
