@@ -30,7 +30,7 @@ class Scoreboard extends React.Component {
 
     return (
       <div className="Scoreboard">
-        <ScoreboardHeader name="Player" score= "Score"/>
+        <ScoreboardHeader/>
         {playerComponents}
       </div>
     )
