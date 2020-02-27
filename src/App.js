@@ -11,6 +11,7 @@ class App extends React.Component {
       players: []
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleSubmit(newPlayer) {
@@ -22,11 +23,21 @@ class App extends React.Component {
     })
   }
 
+  handleDelete(player) {
+    this.setState(prevState => {
+      let deletedPlayer = this.state.players.find(x => x.id === player);
+      let remainingPlayers = [...this.state.players].filter(function(player, arr){
+        return player != deletedPlayer;
+      })
+      return {players: remainingPlayers}
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="ScoreboardContainer">
-          <Scoreboard players={this.state.players}/>
+          <Scoreboard players={this.state.players} handleDelete={this.handleDelete}/>
         </div>
         <div className="PlayerFormContainer">
           <PlayerForm handleSubmit={this.handleSubmit}/>
