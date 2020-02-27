@@ -63,7 +63,7 @@ class PlayerForm extends React.Component {
           <input type="number" step="1" name="score" max="100" min="0" onChange={this.handleChange}/>
           </p>
           <button disabled={this.state.disabled} type="button" onClick={this.handleSubmit}>Create Player</button>
-          <p>*Players must have a first and <br/> last name and a score.</p>
+          <p>*Players must have a first and <br/> last name and a score between <br/> 0 and 100.</p>
         </form>
       </div>
     )
